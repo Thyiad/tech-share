@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Vue 入门之旅</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style media="screen">
+			ul,small{
+				width: 100%;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- 什么是MVVM -->
+				<section>
+					<section>
+						<h1>MVVM</h1>
+						<p>
+							<small class="fragment">jQuery 手工操作 DOM 的苦恼：代码是命令式的、重复的与易错的</small>
+							<small class="fragment">MVVM拥抱数据驱动视图的概念</small>
+						</p>
+					</section>
+					<section>
+						<img src="/img/mvvm.png" alt="mvvm" />
+						<h5 class="fragment">MVVM: Model-View-ViewModel</h5>
+					</section>
+				</section>
+				<!-- 什么是Vue -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<section>
+						<h2>Vue.js</h2>
+						<p class="fragment">
+							<small >
+								Vue.js（读音 /vjuː/, 类似于 view）是一个构建数据驱动的 web 界面的库。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
+							</small>
+						</p>
+						<p class="fragment">
+							<small>
+								Vue的定位与React相同，只关注视图层。而Angular的定位则是大而全。
+							</small>
+						</p>
+					</section>
+					<section>
+						<p>
+							<small>
+								作者：尤雨溪 美籍华人 颜值高
+							</small>
+							<br />
+							<img class="fragment" src="/img/yyx.jpg" alt="" />
+						</p>
+					</section>
+
+				</section>
+				<!-- 数据绑定 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<section>
+						<h2>数据绑定</h2>
+						<p>
+							<small>
+								<ul>
+									<li class="fragment">
+										创建Vue实例
+										<pre class="fragment"><code class="hljs">
+	new Vue({
+	    el: '#app',
+	    data: {},
+	})
+										</code></pre>
+									</li>
+									<li class="fragment">
+										插入文本：Mustache语法 (双大括号)
+										<pre class="fragment"><code class="hljs">&lt;span&gt;Message: {{ msg }}&lt;/span&gt;</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										不止是简单值，同时支持全功能的JavaScript表达式
+										<pre class="fragment"><code class="hljs">{{ number + 1 }}</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										双 Mustache 标签将数据解析为纯文本而不是 HTML。{{{raw_html}}}：3个大括号可以将数据解析为HTML
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+					<section>
+						<p>
+							<small>
+								<ul>
+									<li>
+										绑定属性：v-bind 指令
+										<pre class="fragment"><code class="hljs">&lt;a v-bind:href="url"&gt;&lt;/a&gt;</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										v-bind的缩写 :
+										<pre class="fragment"><code class="hljs">&lt;a :href="url"&gt;&lt;/a&gt;</code></pre>
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+				</section>
+				<!-- 条件渲染 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<section>
+						<h2>条件渲染</h2>
+						<p>
+							<small>
+								<ul>
+									<li>
+										v-if、v-else 指令
+										<pre class="fragment"><code class="hljs">&lt;h1 v-if="ok"&gt;Yes&lt;/h1&gt;
+&lt;h1 v-else&gt;No&lt;/h1&gt;</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										template v-if
+										<pre class="fragment"><code class="hljs">&lt;template v-if="ok"&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+  &lt;p&gt;Paragraph 1&lt;/p&gt;
+  &lt;p&gt;Paragraph 2&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+					<section>
+						<p>
+							<small>
+								<ul>
+									<li>
+										v-show 指令
+										<pre class="fragment"><code class="hljs">&lt;h1 v-show="ok"&gt;Hello!&lt;/h1&gt;</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										v-if 与 v-show 的区别
+										<br>
+										<br>
+										<small>v-show 等同于 display: none, 而v-if不会创建dom元素</small>
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+
+				</section>
+				<!-- 列表渲染 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>列表渲染</h2>
+					<p>
+						<small>
+							<ul>
+								<li>
+									v-for 指令
+									<pre class="fragment"><code class="hljs" data-trim>
+&lt;ul&gt;
+  &lt;li v-for="item in items"&gt;
+    {{ item.message }}
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+								</li>
+								<br>
+								<li class="fragment">
+									$index 特殊变量
+								</li>
+								<br>
+								<li class="fragment">
+									template v-for
+									<pre class="fragment"><code class="hljs" data-trim>
+&lt;ul&gt;
+	&lt;template v-for="item in items"&gt;
+		&lt;li&gt;{{ item.msg }}&lt;/li&gt;
+		&lt;li class="divider"&gt;&lt;/li&gt;
+	&lt;/template&gt;
+&lt;/ul&gt;
+										</code></pre>
+								</li>
+								<br>
+								<li class="fragment">
+									对象 v-for
+									<br>
+									<br>
+									<small>遍历的是对象值</small>
+									<br>
+									<small>多一个特殊变量：$key</small>
+								</li>
+								<br>
+							</ul>
+						</small>
+					</p>
+				</section>
+				<!-- 事件绑定 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>事件绑定</h2>
+					<section>
+						<p>
+							<small>
+								<ul>
+									<li>
+										v-on 指令
+										<pre class="fragment"><code class="hljs" data-trim>
+	&lt;button v-on:click="shit"&gt;shit&lt;/button&gt;
+											</code></pre>
+									</li>
+									<br>
+										<li class="fragment">
+											v-on 指令的缩写
+											<pre class="fragment"><code class="hljs" data-trim>
+		&lt;button @click="shit"&gt;shit&lt;/button&gt;
+												</code></pre>
+										</li>
+										<br>
+									<li class="fragment">
+										为事件函数传递参数 (内联语句)
+										<pre class="fragment"><code class="hljs" data-trim>
+	&lt;button v-on:click="shit('bug')"&gt;shit&lt;/button&gt;
+											</code></pre>
+									</li>
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+					<section>
+						<p>
+							<small>
+								<ul>
+									<li>
+										还可以添加为事件添加修饰符，最常用的是按键修饰符：
+										<pre class="fragment"><code class="hljs">&lt;input v-on:keyup.13="submit"&gt;</code></pre>
+									</li>
+									<br>
+									<li class="fragment">
+										记住所有的keyCode是比较困难的，所以同时提供了常用的按键别名：
+										<pre class="fragment"><code class="hljs">enter tab delete esc space up down left right</code></pre>
+									</li>
+									<br>
+								</ul>
+							</small>
+						</p>
+					</section>
+				</section>
+				<!-- class、style以及计算属性 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>class、style以及计算属性</h2>
+					<p>
+						<smal class="fragment">同属于绑定属性，只不过特殊一点</smal>
+						<small>
+							<ul>
+								<li class="fragment">
+									class、style：可以绑定为一个对象或者数组
+								</li>
+								<br>
+								<li class="fragment">
+									计算属性：模板中放入太多逻辑会让模板过重且难以维护
+								</li>
+								<br>
+							</ul>
+						</small>
+					</p>
+				</section>
+				<!-- 还有什么没有讲的 -->
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>还有什么没有讲的</h2>
+					<p>
+						<small>
+							<ul>
+								<li>注意事项、性能优化</li>
+								<br>
+								<li>组件</li>
+								<br>
+								<li>过渡</li>
+								<br>
+								<li>与其他框架对比</li>
+								<br>
+							</ul>
+						</small>
+					</p>
+				</section>
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html">MVC，MVP 和 MVVM的图示</a><br>
+						- <a href="http://cn.vuejs.org/guide/index.html">Vue.js的官方教程</a>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
