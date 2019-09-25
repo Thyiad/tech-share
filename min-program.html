@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>番外篇：小程序</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/wx.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style media="screen">
+			ul,small{
+				width: 100%;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- 章节 -->
+                <section>
+                    <h1>纪元</h1>
+                    <p>
+                        <ul>
+                            <li>第一纪 <span class="fragment highlight-red">宇宙魔方</span> 微信</li>
+                            <li>第二纪 <span class="fragment highlight-green">奥创纪元</span> 小程序</li>
+                            <li>第三纪 <span class="fragment highlight-red">无限战争</span> 框架</li>
+                            <li>第四纪 <span class="fragment highlight-blue">无限未来</span> 未来</li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### 第一纪 宇宙魔方
+
+                            # *微信*
+
+                            - 2010年：筹划启动<!-- .element: class="fragment"-->
+                            - 2011年：初版诞生<!-- .element: class="fragment"-->
+                            - 2012年：用户突破1亿、2亿<!-- .element: class="fragment"-->
+                            - 基础特点：通讯、交友、朋友圈<!-- .element: class="fragment"-->
+                            - 服务用户生活，丰富的公众号<!-- .element: class="fragment"-->
+                        </script>
+                    </section>
+                    <section>
+                        <img src="img/mini-program/wx-regist.jpeg" alt="" style="width: 360px;">
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### 公众号网页
+
+                            - 微信浏览器（QQ浏览器x5内核）的h5网页
+                            - 性能/体验差：硬件、代码、网络
+                            - 原生能力缺失
+
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### 微信 jssdk
+                            早期只是内部使用，未公开api:
+
+                            ``` javascript
+                            document.addEventListener("WeixinJSBridgeReady", function () {
+                                audio.play();
+                            }, false);
+                            WeixinJSBridge.invoke('imagePreview', {}, function(res){ });
+
+                            wx.config({})
+                            wx.xxx
+                            ```
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### h5无法完全解决
+
+                            - 性能
+                            - 体验
+
+                        </script>
+                    </section>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### 第二纪 奥创纪元
+
+                        # *小程序*
+
+                        - 快速的加载
+                        - 更强大的能力
+                        - 原生的体验
+                        - 易用且安全的微信数据开放
+                        - 高效和简单的开发
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### 缺陷
+
+                        - 不能使用css预处理器（less/sass/stylus）
+                        - ES6/7支持不全（async/await）
+                        - 没有状态管理（app.js globalData, getApp()）
+                        - 没有自定义组件（现在已经有了）
+                        - 接口仍然是callback（本身支持promise）
+                        - 像vue又不完全像：强制分离WXSS, WXML和JS、没有双向绑定
+                        - 多端需求（h5, 微信, 支付宝, 百度）
+                        - 希望有react, vue的开发体验
+                    </script>
+                </section>
+            </div>
+        </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+    </body>
+</html>
