@@ -52,7 +52,7 @@
                             - 2011年：初版诞生<!-- .element: class="fragment"-->
                             - 2012年：用户突破1亿、2亿<!-- .element: class="fragment"-->
                             - 基础特点：通讯、交友、朋友圈<!-- .element: class="fragment"-->
-                            - 服务用户生活，丰富的公众号<!-- .element: class="fragment"-->
+                            - 服务用户生活，丰富的公众号（2012/8）<!-- .element: class="fragment"-->
                         </script>
                     </section>
                     <section>
@@ -64,7 +64,7 @@
                         <script type="text-template">
                             ### 公众号网页
 
-                            - 微信浏览器（QQ浏览器x5内核）的h5网页
+                            - 微信浏览器（x5内核）的h5网页
                             - 性能/体验差：硬件、代码、网络
                             - 原生能力缺失
 
@@ -72,8 +72,9 @@
                     </section>
                     <section data-markdown>
                         <script type="text-template">
-                            ### 微信 jssdk
-                            早期只是内部使用，未公开api:
+                            ### 微信 jssdk(2015)
+
+                            早期只是内部使用，未公开api：
 
                             ``` javascript
                             document.addEventListener("WeixinJSBridgeReady", function () {
@@ -81,7 +82,6 @@
                             }, false);
                             WeixinJSBridge.invoke('imagePreview', {}, function(res){ });
 
-                            wx.config({})
                             wx.xxx
                             ```
                         </script>
@@ -102,26 +102,81 @@
 
                         # *小程序*
 
-                        - 快速的加载
-                        - 更强大的能力
-                        - 原生的体验
-                        - 易用且安全的微信数据开放
-                        - 高效和简单的开发
+                        - 快速的加载<!-- .element: class="fragment"-->
+                        - 更强大的能力<!-- .element: class="fragment"-->
+                        - 原生的体验<!-- .element: class="fragment"-->
+                        - 易用且安全的微信数据开放<!-- .element: class="fragment"-->
+                        - 高效和简单的开发<!-- .element: class="fragment"-->
 
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text-template">
-                        ### 缺陷
+                        ### 不足
 
-                        - 不能使用css预处理器（less/sass/stylus）
-                        - ES6/7支持不全（async/await）
-                        - 没有状态管理（app.js globalData, getApp()）
-                        - 没有自定义组件（现在已经有了）
-                        - 接口仍然是callback（本身支持promise）
-                        - 像vue又不完全像：强制分离WXSS, WXML和JS、没有双向绑定
-                        - 多端需求（h5, 微信, 支付宝, 百度）
-                        - 希望有react, vue的开发体验
+                        - 不能使用css预处理器（less/sass/stylus）<!-- .element: class="fragment"-->
+                        - ES6/7支持不全（async/await）<!-- .element: class="fragment"-->
+                        - 没有状态管理（app.js globalData, getApp()）<!-- .element: class="fragment"-->
+                        - 没有自定义组件（现在已经有了）<!-- .element: class="fragment"-->
+                        - 不支持npm包管理（现在已经有了）<!-- .element: class="fragment"-->
+                        - 接口仍然是callback（本身支持promise）<!-- .element: class="fragment"-->
+                        - 像vue又不完全像：强制分离WXSS, WXML和JS、没有双向绑定<!-- .element: class="fragment"-->
+                        - 多端需求（h5, 微信, 支付宝, 百度, 头条）<!-- .element: class="fragment"-->
+                        - 希望有react, vue的开发体验<!-- .element: class="fragment"-->
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### 第三纪 无限战争
+
+                        # *框架*
+
+                        - wepy<!-- .element: class="fragment"-->
+                        - mpvue<!-- .element: class="fragment"-->
+                        - mpx<!-- .element: class="fragment"-->
+                        - taro(react, 仅此一家)<!-- .element: class="fragment"-->
+                        - uni-app<!-- .element: class="fragment"-->
+                        - chameleon<!-- .element: class="fragment"-->
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                            ### 概览
+
+                            - 增强式
+                                > wepy、mpx
+                            - 编译型
+                                > mpvue、taro、uni-app、chameleon
+                            - 用户规模、成功案例、周边生态
+                                > Wepy、taro、uni-app > mpvue > mpx、chameleon
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### [wepy](https://wepyjs.github.io/wepy-docs/#/)、[mpx](https://didi.github.io/mpx/)
+                        
+                        - 类vue（vue子集）
+                            > wepy还有自己的语法，比如repeat
+                        - wepy不支持多端
+                        - mpx2.0已支持
+                            > 不支持h5, app, 从wx小程序源码转换成其他的小程序, 差异抹平不够
+                        -两者特性已不那么有吸引力
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### mpvue
+
+                        - 修改 vue的 runtime 和 compiler
+                        - vue特性几乎全支持
+                            > 动态组件不支持：<component :is="xxx">
+                        - 特性：h5转换成小程序（价值存疑）
+                        - 2.0开始支持支付宝、百度、头条小程序
+                        - 6个月以上已无更新
+
                     </script>
                 </section>
             </div>
