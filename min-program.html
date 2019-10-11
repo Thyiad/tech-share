@@ -159,23 +159,62 @@
                         
                         - 类vue（vue子集）
                             > wepy还有自己的语法，比如repeat
-                        - wepy不支持多端
-                        - mpx2.0已支持
+                        - wepy不支持多端, mpx2.0已支持
                             > 不支持h5, app, 从wx小程序源码转换成其他的小程序, 差异抹平不够
-                        -两者特性已不那么有吸引力
+                        - 两者已不那么有吸引力
+
+                    </script>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### [mpvue](https://github.com/Meituan-Dianping/mpvue)
+
+                            - 修改 vue的 runtime 和 compiler
+                            - vue技能树几乎全部点满
+                            - 2.0开始支持支付宝、百度、头条小程序
+                            - 7个月以上已无更新
+
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### about
+
+                            - 小程序限制：wxml只能静态，需要预编译好
+                            - 动态组件不支持：component :is
+                            - 异步组件不支持：() => import
+                            - inline-templte, X-Templates
+
+                        </script>
+                    </section>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### taro
+
+                        - 唯一一个react系
+                            > 与mpvue不同，基于小程序的 Component 构造器，没有 Page
+                            <!-- .element: class="fragment" -->
+                        - react[技能树]几乎全部点满(https://taro-docs.jd.com/taro/docs/best-practice.html)
+                            > v1.3.0-beta.0后只剩下一条：不能使用 Array#map 之外的方法操作 JSX 数组
+                            <!-- .element: class="fragment" -->
+                        - 多端支持广
+                            > h5, 小程序, app, 快应用，统统支持
+                            <!-- .element: class="fragment" -->
 
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text-template">
-                        ### mpvue
+                        ### uni-app
 
-                        - 修改 vue的 runtime 和 compiler
-                        - vue特性几乎全支持
-                            > 动态组件不支持：<component :is="xxx">
-                        - 特性：h5转换成小程序（价值存疑）
-                        - 2.0开始支持支付宝、百度、头条小程序
-                        - 6个月以上已无更新
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### chameleon
 
                     </script>
                 </section>
