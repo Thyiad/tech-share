@@ -157,11 +157,12 @@
                     <script type="text-template">
                         ### [wepy](https://wepyjs.github.io/wepy-docs/#/)、[mpx](https://didi.github.io/mpx/)
                         
-                        - 类vue（vue子集）
+                        - 类vue（vue子集）<!-- .element: class="fragment"-->
                             > wepy还有自己的语法，比如repeat
-                        - wepy不支持多端, mpx2.0已支持
-                            > 不支持h5, app, 从wx小程序源码转换成其他的小程序, 差异抹平不够
-                        - 两者已不那么有吸引力
+                            <!-- .element: class="fragment"-->
+                        - wepy不支持多端, mpx2.0已支持<!-- .element: class="fragment"-->
+                            > 不支持h5, app, 从wx小程序源码转换成其他的小程序, 差异抹平不够<!-- .element: class="fragment"-->
+                        - 两者已不那么有吸引力<!-- .element: class="fragment"-->
 
                     </script>
                 </section>
@@ -169,12 +170,23 @@
                 <section>
                     <section data-markdown>
                         <script type="text-template">
-                            ### [mpvue](https://github.com/Meituan-Dianping/mpvue)
+                            ### [mpvue](https://github.com/Meituan-Dianping/mpvue)、[uni-app](https://uniapp.dcloud.io/)
 
                             - 修改 vue的 runtime 和 compiler
                             - vue技能树几乎全部点满
-                            - 2.0开始支持支付宝、百度、头条小程序
-                            - 7个月以上已无更新
+                            - 2.0开始支持支付宝、百度、头条小程序（mpvue）
+                            - 7个月以上已无更新（mpvue）
+
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            ### uni-app
+
+                            - h5+ -> nvue -> uni-app
+                            - app（h5+、weex）、h5、各种小程序（mpvue）、快应用
+                            - 借鉴C：#ifdef, #ifndef, #endif
+                            - hbuilder编辑器、插件市场
 
                         </script>
                     </section>
@@ -184,6 +196,7 @@
 
                             - 小程序限制：wxml只能静态，需要预编译好
                             - 动态组件不支持：component :is
+                            - 无状态组件不支持：functionnal: only render
                             - 异步组件不支持：() => import
                             - inline-templte, X-Templates
 
@@ -197,7 +210,7 @@
                         - 唯一一个react系
                             > 与mpvue不同，基于小程序的 Component 构造器，没有 Page
                             <!-- .element: class="fragment" -->
-                        - react[技能树]几乎全部点满(https://taro-docs.jd.com/taro/docs/best-practice.html)
+                        - react[技能树](https://taro-docs.jd.com/taro/docs/best-practice.html)几乎全部点满
                             > v1.3.0-beta.0后只剩下一条：不能使用 Array#map 之外的方法操作 JSX 数组
                             <!-- .element: class="fragment" -->
                         - 多端支持广
@@ -208,15 +221,152 @@
                 </section>
                 <section data-markdown>
                     <script type="text-template">
-                        ### uni-app
+                        ### chameleon
+
+                        - 前辈们基于react/vue语法，wx小程序api，chameleon更激进
+                        - 自己的语法：CMSS, CML，自己的接口
+                        - 鼓励开发者将差异api封装成统一的接口
+                        - [多态协议](https://cmljs.org/doc/framework/polymorphism/api.html)
 
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text-template">
-                        ### chameleon
+                        ### taro 安装
+
+                        ``` bash
+                        $ npm install -g @tarojs/cli
+                        $ taro init xxx
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        prepare
+
+                        - cli版本保持一致
+                        <!-- .element: class="fragment" -->
+                        - 目录结构（redux+ts）
+                        <!-- .element: class="fragment" -->
+                        - dist目录
+                        <!-- .element: class="fragment" -->
+                        - 环境变量
+                        <!-- .element: class="fragment" -->
 
                     </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        lifecycle
+
+                        ```
+                        Page.onLoad	componentWillMount
+                        onShow	componentDidShow
+                        onHide	componentDidHide
+                        onReady	componentDidMount
+                        onUnload	componentWillUnmount
+                        onError	componentDidCatchError
+                        App.onLaunch	componentWillMount
+                        Component.created	componentWillMount
+                        attached	componentDidMount
+                        ready	componentDidMount
+                        detached	componentWillUnmount
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        内置组件不支持...
+
+                        ```javascript
+                        <Button {...props} />
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        state, props属性不要重复
+
+                        ```javascript
+                        // state和props都挂在小程序的data上，会以后设置的值为准
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        style中的px不会被编译成rpx
+
+                        ```javascript
+                        <View style={{marginBottom: '16px'}}>
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        不能setState undefined
+
+                        ```javascript
+                        this.setState({a: undefined})   // 小程序的data不能设置undefined
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        constuctor与render会多调用一次
+
+                        ```javascript
+                        // 提前调用一次，收集数据，生成小程序组件的data
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        疑难杂症
+
+                        - 首次修改redux，步数授权弹窗仍不显示
+                        - return null不管用，兑换结果弹窗仍然不关闭
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text-template">
+                        ### 无限未来
+
+                        - [小程序标准](https://www.w3.org/TR/mini-app-white-paper/)
+                        - [会议纪要](https://www.w3.org/2019/05/11-chinese-web-mobile-web-apps-summary.html)
+
+                    </script>
+                </section>
+                <section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            快应用
+            
+                            <small>九大国产手机厂商（仅安卓）</small>
+
+                            <img src="img/quick-app.png" class="logo" style="width: 600px;height: auto" />
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text-template">
+                            pwa
+
+                            - 拥有桌面入口
+                            - 推送：Notification API
+                            - 离线缓存：Service Worker
+
+                            在iphone体验达不到android（苹果远没有谷歌支持）<!-- .element: class="fragment"-->
+
+                        </script>
+                    </section>
+                </section>
+                <section style="text-align: left;">
+                    <h1>THE END</h1>
+                    <p>
+                        [src](https://github.com/Thyiad/tech-share)
+                        [reveal.js](https://github.com/hakimel/reveal.js)
+                        [docker](https://www.docker.com/)
+                    </p>
                 </section>
             </div>
         </div>
